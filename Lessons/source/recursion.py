@@ -13,10 +13,9 @@ def factorial(n):
 
 
 def factorial_iterative(num):
-    # TODO: implement the factorial function iteratively here
-
     result = 1
     for number in range(1, num + 1):  # range will return a list of numbers
+        # multiply the current result by the next number in the index, set it to the new result
         result = result * number
     return result
 
