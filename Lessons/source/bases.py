@@ -1,5 +1,6 @@
 #!python
 
+
 import string
 # Hint: Use these string constants to encode/decode hexadecimal digits and more
 # string.digits is '0123456789'
@@ -19,25 +20,29 @@ letter_value = {
 
 
 
-def decode(digits, base):
+def decode(digits, base): #def decode(digits, base):
     """Decode given digits in given base to number in base 10.
     digits: str -- string representation of number (in given base)
     base: int -- base of given number
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
-    assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
+    # assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # TODO: Decode digits from binary (base 2)
 
+    answer = 0 # empty array to hold the value of the decoded bimary while we are still adding to it
 
-    rev_digits = reverse(digits) #reversing the digits to get an index val
-    base = 2 # declaring which base we are using as a variable
-    for i in range(rev_digits): # this will loop over each index val
-        answer = [] # empty array to hold the value of the decoded bimary while we are still adding to it
+    rev_digits = digits[::-1] #reversing the digits to get an index val
+    # base = 2 # declaring which base we are using as a variable
+    for i in range(len(rev_digits)): # this will loop over each index val
         value = rev_digits[i] # getting the value at that index position
-        int_value = int(value) # converting that value (currently a string) to an integer
+        int_value = int(value, base) # converting that value (currently a string) to an integer
         base_pow = base**i # whatever index position we are at is the power to which we will multiply the base
-        decoded_binary_index = value*base_pow # taking the value(number) at that index position and multiplying it by the base power that we just calculated above
-        answer.add(decoded_binary_index) #now adding the value we came up with to the anser which will give us a total equal to the decoded binary value
+        # print(type(base_pow))
+        decoded_binary_index = int_value*base_pow # taking the value(number) at that index position and multiplying it by the base power that we just calculated above
+        # print("decoded binary index : ")
+        print(type(decoded_binary_index))
+        answer = answer + int(decoded_binary_index) #now adding the value we came up with to the anser which will give us a total equal to the decoded binary value
+        print("answer: ", answer)
     return answer
 
 
@@ -58,11 +63,22 @@ def encode(number, base):
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
     # TODO: Encode number in binary (base 2)
-    # ...
+    remainder = 0
+    rem_string = []
+
+    while number > 0:
+        remainder = number % 2
+
     # TODO: Encode number in hexadecimal (base 16)
     # ...
     # TODO: Encode number in any base (2 up to 36)
     # ...
+
+    remainder = 0
+    rem_string = []
+
+    while number > 0:
+        remainder = number % 2
 
 
 def convert(digits, base1, base2):
@@ -102,3 +118,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+    decode('1010')

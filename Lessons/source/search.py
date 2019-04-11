@@ -1,4 +1,8 @@
 #!python
+# iterative factorial
+# recursive linear search
+# iterative binary search
+# Recursive Binary search
 
 def linear_search(array, item):
     """return the first index of item in array or None if item is not found"""

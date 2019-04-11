@@ -12,9 +12,17 @@ def factorial(n):
     return factorial_recursive(n)
 
 
-def factorial_iterative(n):
+def factorial_iterative(num):
     # TODO: implement the factorial function iteratively here
-    pass
+
+    result = 1
+    for number in range(1, num + 1):  # range will return a list of numbers
+        result = result * number
+    return result
+
+
+
+# factorial_iterative(5)
     # once implemented, change factorial (above) to call factorial_iterative
     # to verify that your iterative implementation passes all tests
 
