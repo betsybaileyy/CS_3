@@ -79,14 +79,17 @@ class LinkedList(object):
         if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
 
-        node = self.head
-        node_index = 0
-        while node is not None and node_index != index:
-            node = self.next #resetting node value to next node
-            node_index += 1 #increment the index value by one
-        if node is None:
-            print("item not in list")
-        return node
+        curr_node = self.head #initalizing as head of list
+        node_index = 0 # at index 0
+        while node_index < index:
+            curr_node = curr_node.next
+            node_index += 1
+        # while curr_node is not None and node_index != index:
+        #     curr_node = self.next #resetting node value to next node
+        #     node_index += 1 #increment the index value by one
+        # if curr_node is None: #indicating if it was not found
+        #     print("item not in list")
+        return curr_node
 
 
     def insert_at_index(self, index, item):
@@ -97,7 +100,15 @@ class LinkedList(object):
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
-        # TODO: Find the node before the given index and insert item after it
+
+        #Find the node before the given index and insert item after it
+        curr_node = self.head #set current node to head
+        node_index = 0 # set the index to 0
+
+        while curr_node is not None and node_index != index: #while the current node isnt empty and
+            curr_node = self.next
+        return curr_node
+
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -152,9 +163,18 @@ class LinkedList(object):
         using the same node, or raise ValueError if old_item is not found.
         Best case running time: ??? under what conditions? [TODO]
         Worst case running time: ??? under what conditions? [TODO]"""
-        # TODO: Find the node containing the given old_item and replace its
+        # Find the node containing the given old_item and replace its
         # data with new_item, without creating a new node object
-        pass
+        curr_item = self.head # initalizing the current item as the head
+        next_item = self.head.next # initalizing as the next node (pretty much)
+        # iterate through both current and next item and stop when next_item is the one we are looking for
+        while curr_item.next is not None and next_item != old_item:
+            curr_item = curr_item.next #set current item to the next node
+            next_item = next_item.next #setting to the next item
+        next_item = new_item #once we find the item we are looking for we will replace it with the new item
+        curr_item.next = next_item
+
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
