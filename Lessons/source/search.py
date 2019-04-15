@@ -1,5 +1,4 @@
 #!python
-# iterative factorial
 # recursive linear search
 # iterative binary search
 # Recursive Binary search
