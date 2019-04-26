@@ -1,5 +1,5 @@
 #!python
-
+# -*- coding: utf-8 -*-
 from linkedlist import LinkedList
 
 
@@ -47,6 +47,7 @@ class LinkedStack(object):
         # Return top item, if any
         if self.is_empty():
             print("list is empty")
+            return None
         return self.list.head.data
 
     # me again
@@ -56,10 +57,12 @@ class LinkedStack(object):
         Running time: O(???) – Why? [TODO]"""
         # Remove and return top item, if any
         if self.is_empty():
-            print("this list is empty")
+            raise ValueError("this didnt work")
+
         top_item = self.list.head.data
-        self.list.head = self.list.head.next
-        self.list.size -= -1
+        self.list.delete(top_item)
+        # self.list.head = self.list.head.next
+        # self.list.size -= -1
         return top_item
 
 
@@ -96,15 +99,17 @@ class ArrayStack(object):
         Running time: O(???) – Why? [TODO]"""
         # Insert given item
         self.list.append(item)
+        return self
 
     def peek(self):
         """Return the item on the top of this stack without removing it,
         or None if this stack is empty."""
         # Return top item, if any
         if self.is_empty():
-            print("this list is empty")
-        index = self.length() - 1
-        return self.list[index]
+
+            return None
+        item_index = self.length() - 1
+        return self.list[item_index]
 
     def pop(self):
         """Remove and return the item on the top of this stack,
@@ -112,7 +117,9 @@ class ArrayStack(object):
         Running time: O(???) – Why? [TODO]"""
         # Remove and return top item, if any
         if self.is_empty():
-            print("this list is empty")
+
+            raise ValueError("this list is empty")
+
         return self.list.pop()
 
 
