@@ -49,8 +49,9 @@ class LinkedQueue(object):
         or raise ValueError if this queue is empty.
         Running time: O(???) – Why? [TODO]"""
         # Remove and return front item, if any
-        if seld.is_empty():
-            print("this queue is empty")
+        if self.is_empty():
+            raise ValueError("look at this error")
+        
         item = self.list.head.data
         self.list.head = self.list.head.next
         self.list.size -= 1
