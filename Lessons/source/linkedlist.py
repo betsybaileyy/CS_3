@@ -101,13 +101,15 @@ class LinkedList(object):
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
 
-        #Find the node before the given index and insert item after it
-        curr_node = self.head #set current node to head
-        node_index = 0 # set the index to 0
+        
 
-        while curr_node is not None and node_index != index: #while the current node isnt empty and
-            curr_node = self.next
-        return curr_node
+        # #Find the node before the given index and insert item after it
+        # curr_node = self.head #set current node to head
+        # node_index = 0 # set the index to 0
+        #
+        # while curr_node is not None and node_index != index: #while the current node isnt empty and
+        #     curr_node = self.next
+        # return curr_node
 
 
     def append(self, item):
