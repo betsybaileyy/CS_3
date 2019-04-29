@@ -1,6 +1,7 @@
 
 from hashtable import HashTable
 
+# set is a data structure of unordered and unique elements
 class Set(object):
     def __init__(self, elements=None):
         """initialize a new empty set structure, and add each element if a sequence is given"""
