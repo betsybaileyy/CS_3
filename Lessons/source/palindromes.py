@@ -29,8 +29,9 @@ def is_palindrome_iterative(text):
 
 
 def is_palindrome_recursive(text, left=None, right=None):
-    # TODO: implement the is_palindrome function recursively here
+    # implement the is_palindrome function recursively here
     if right == None:
+        left = 0
         right = len(text) - 1
     if left >= right:
         return True
@@ -58,3 +59,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print(is_palindrome_recursive('racecar'))
