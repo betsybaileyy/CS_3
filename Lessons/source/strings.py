@@ -5,7 +5,10 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # Implement contains here (iteratively and/or recursively)
-
+    if self.find_index():
+        return True
+    else:
+        return False
 
 
 def find_index(text, pattern):
@@ -13,7 +16,29 @@ def find_index(text, pattern):
     or None if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_index here (iteratively and/or recursively)
+    # Implement find_index here (iteratively and/or recursively)
+
+    for i in range(len(text)):
+        if(text[index] == pattern[0]):
+
+            no_misses = True  #assumption that pattern matches
+            for j in range(len(pattern)): # j is the index number in the pattern, not the text
+
+                # checking if pattern matches incrementally
+                if(pattern[j] != text[i + j]): # i is the index of the text, and j is index of pattern, so, added, they equal the correct index of the text snippet that we are looking for
+                
+                    no_misses = False # assumption is wrong
+                    break
+
+            if(no_misses): # if assumption is true
+                return i
+
+    return None
+
+
+
+
+
 
 
 def find_all_indexes(text, pattern):
@@ -21,7 +46,12 @@ def find_all_indexes(text, pattern):
     or an empty list if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_all_indexes here (iteratively and/or recursively)
+    # Implement find_all_indexes here (iteratively and/or recursively)
+    index = find_index(text, pattern)
+    if found:
+        return list of starting indexes of all occurences of pattern in text
+    else if not found:
+        return "empty list"
 
 
 def test_string_algorithms(text, pattern):
