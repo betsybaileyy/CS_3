@@ -64,7 +64,7 @@ class StringsTest(unittest.TestCase):
 
     def test_find_index_with_complex_patterns(self):
         # Difficult test cases (examples) with complex patterns
-        assert find_index('ababc', 'abc') == 2  # overlapping prefix
+        assert find_index('ababc', 'ab') == 0  # overlapping prefix
         assert find_index('bananas', 'nas') == 4  # overlapping prefix
         assert find_index('abcabcabc', 'abc') == 0  # multiple occurrences
         assert find_index('abcabcab', 'abc') == 0  # multiple occurrences
