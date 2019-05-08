@@ -56,7 +56,8 @@ class LinkedList(object):
 
     def length(self):
         """Return the length of this linked list by traversing its nodes.
-        Best and worst case running time: 0(n) run time because  under what conditions? [TODO]"""
+        Best and worst case running time: 0(n) run time because we have to account
+        for each item in the list"""
         # Node counter initialized to zero
         node_count = 0
         # Start at the head node
@@ -73,8 +74,9 @@ class LinkedList(object):
     def get_at_index(self, index):
         """Return the item at the given index in this linked list, or
         raise ValueError if the given index is out of range of the list size.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: 0(1) If index is at the begining of the list.
+        Worst case running time: 0(n) If index is not at the begining and we
+        need to iterate through each item"""
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
@@ -84,19 +86,15 @@ class LinkedList(object):
         while index > 0:
             curr_node = curr_node.next
             index -= 1
-        # while curr_node is not None and node_index != index:
-        #     curr_node = self.next #resetting node value to next node
-        #     node_index += 1 #increment the index value by one
-        # if curr_node is None: #indicating if it was not found
-        #     print("item not in list")
+
         return curr_node.data
 
 
     def insert_at_index(self, index, item):
         """Insert the given item at the given index in this linked list, or
         raise ValueError if the given index is out of range of the list size.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: 0(1) if we insert at the begining of the list
+        Worst case running time: 0(n) if we are not inserting at the begining"""
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
@@ -126,7 +124,8 @@ class LinkedList(object):
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
+        Best and worst case running time: 0(1)
+        because we are adding the the end of the list"""
         # Create a new node to hold the given item
         new_node = Node(item)
         # Check if this linked list is empty
@@ -142,7 +141,8 @@ class LinkedList(object):
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
+        Best and worst case running time: 0(1) because we are
+        adding the the begining of the list"""
         # Create a new node to hold the given item
         new_node = Node(item)
         # Check if this linked list is empty
@@ -177,33 +177,24 @@ class LinkedList(object):
     def replace(self, old_item, new_item):
         """Replace the given old_item in this linked list with given new_item
         using the same node, or raise ValueError if old_item is not found.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: 0(1) if replacing at the begining of list
+        Worst case running time: 0(n) if we are not replacing at the begining of the list"""
         # Find the node containing the given old_item and replace its
         # data with new_item, without creating a new node object
-        # curr_node = self.head # initalizing the current item as the head
-        # next_item = self.head.next # initalizing as the next node (pretty much)
-        # # iterate through both current and next item and stop when next_item is the one we are looking for
-        # while curr_node is not None:
-        # # and next_item != old_item:
-        #     if node.data ==
-        #     curr_node = curr_node.next #set current item to the next node
-        #     next_item = next_item.next #setting to the next item
-        # next_item = new_item #once we find the item we are looking for we will replace it with the new item
-        # curr_item.next = next_item
-        node = self.head
+
+        node = self.head # initalizing the current item as the head
         while node is not None:
             if node.data == old_item:
                 node.data = new_item
                 return
-            node = node.next
+            node = node.next # initalizing as the next node (pretty much)
         raise ValueError('Item not found: {}'.format(old_item))
 
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: 0(1) if we are deleteing at the begining of the list.
+        Worst case running time: 0(n) if we are not inserting at the begining"""
         # Start at the head node
         node = self.head
         # Keep track of the node before the one containing the given item
@@ -284,3 +275,16 @@ def test_linked_list():
 
 if __name__ == '__main__':
     test_linked_list()
+
+
+'''Old code for the delete method'''
+# curr_node = self.head # initalizing the current item as the head
+# next_item = self.head.next # initalizing as the next node (pretty much)
+# # iterate through both current and next item and stop when next_item is the one we are looking for
+# while curr_node is not None:
+# # and next_item != old_item:
+#     if node.data ==
+#     curr_node = curr_node.next #set current item to the next node
+#     next_item = next_item.next #setting to the next item
+# next_item = new_item #once we find the item we are looking for we will replace it with the new item
+# curr_item.next = next_item
