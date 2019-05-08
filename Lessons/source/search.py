@@ -49,7 +49,7 @@ def binary_search_iterative(array, item):
         elif item < array[halved]:
             halved = halved // 2
             likley_hood -= 1
-        else item > array[halved]:
+        else:
             halved = halved + (len(array) - halved) // 2
             likley_hood -= 1
     return None

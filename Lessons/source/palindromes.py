@@ -1,5 +1,5 @@
 #!python
-
+import re
 import string
 # Hint: Use these string constants to ignore capitalization and/or punctuation
 # string.ascii_lowercase is 'abcdefghijklmnopqrstuvwxyz'
@@ -13,8 +13,9 @@ def is_palindrome(text):
     # implement is_palindrome_iterative and is_palindrome_recursive below, then
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
+    clean_text = re.sub('[^A-Za-z0-9]+', '', text).lower()
     # return is_palindrome_iterative(text)
-    return is_palindrome_recursive(text)
+    return is_palindrome_recursive(clean_text)
 
 
 def is_palindrome_iterative(text):
@@ -55,6 +56,7 @@ def main():
     else:
         print('Usage: {} string1 string2 ... stringN'.format(sys.argv[0]))
         print('  checks if each argument given is a palindrome')
+
 
 
 if __name__ == '__main__':
