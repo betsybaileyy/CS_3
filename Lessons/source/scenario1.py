@@ -14,7 +14,7 @@ from hashtable import HashTable
 
 def load_data():
     """
-    Returns a list of phone numbers and prices from a file.
+    Returns a list of phone prefixes and prices from a file.
     """
     route_costs = []
     with open('../../project/data/route-costs-4.txt', 'r') as f:
@@ -32,7 +32,7 @@ def init_hashtable(route_costs):
     num_buckets = len(route_costs)
     ht = HashTable(num_buckets)
     for prefix, price in route_costs: # number gives up +
-        print("Phone number and price:", prefix, price)
+        # print("Phone number and price:", prefix, price)
         ht.set(prefix, price)
 
     # Check if have a prefix that matches the start of a phone_num
@@ -46,7 +46,7 @@ def is_prefix_match_and_get_price(ht, phone_num):
     Return True if the prefix we have on record is the start of a phone we give
     as input otherwise return False
     """
-    print("Phone Number:", phone_num)
+    # print("Phone Number:", phone_num)
     #check if the phone number is in the HashTable
     if not phone_num:
         raise ValueError('phone number does not exist')
@@ -57,6 +57,20 @@ def is_prefix_match_and_get_price(ht, phone_num):
     else:
         phone_num = phone_num[:-1]
         return is_prefix_match_and_get_price(ht, phone_num)
+
+def get_prices(phone_numbers, is_prefix_match_and_get_price, ht):
+    #create prices list
+    price_list = []
+
+    #loop through the phone numbers
+    for number in phone_numbers:
+    #pass one phone number into the prefix match function
+    #append price to the list
+        price_list.append(is_prefix_match_and_get_price(ht, phone_num))
+
+    return price_list
+
+
 
     # you've got a phone do we have a prefix that matches it
     # contains
@@ -73,13 +87,32 @@ def is_prefix_match_and_get_price(ht, phone_num):
     # call the function recursivley
     # return recursive function
 
+# open up the phone number file
+    #read the first line, strip away the new line character
+    #add each phone number to a list
 
 
+def load_phone_nums():
+    """
+    Returns a list of phone numbers.
+    """
+    phone_numbers = []
+
+    with open('../../project/data/phone-numbers-3.txt', 'r') as f:
+        for line in f:
+            # print(line)
+            individual_phone_num = line.replace("\n", "")
+            phone_numbers.append(individual_phone_num)
+
+    return phone_numbers
 
 
 if __name__ == '__main__':
     route_costs = load_data()
-    print("Phone Numbers and Prices:", route_costs)
-    print("***")
+    # print("Phone Numbers and Prices:", route_costs)
+    # print("***")
     ht = init_hashtable(route_costs)
-    print(is_prefix_match_and_get_price(ht, '+15124156620'))
+    phone_numbers = load_phone_nums()
+    print(get_prices(phone_numbers, is_prefix_match_and_get_price, ht))
+    # print(is_prefix_match_and_get_price(ht, phone_numbers))
+    # print(load_phone_nums())
