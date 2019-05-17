@@ -23,17 +23,18 @@ class LinkedQueue(object):
     def is_empty(self):
         """Return True if this queue is empty, or False otherwise."""
         #  Check if empty
-        return self.list.size == 0
+        return self.size == 0
 
     def length(self):
         """Return the number of items in this queue."""
         # Count number of items
-        return self.list.size
+        return self.size
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
         Running time: O(1) – Time here is constant because we are only dequeueing one item"""
         # Insert given item
+        self.size += 1
         self.list.append(item)
 
     def front(self):
@@ -55,7 +56,7 @@ class LinkedQueue(object):
 
         item = self.list.head.data
         self.list.head = self.list.head.next
-        self.list.size -= 1
+        self.size -= 1
         return item
 
 
