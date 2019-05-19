@@ -14,17 +14,27 @@ def is_palindrome(text):
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
     clean_text = re.sub('[^A-Za-z0-9]+', '', text).lower()
-    # return is_palindrome_iterative(text)
-    return is_palindrome_recursive(clean_text)
+    return is_palindrome_iterative(clean_text)
+    # return is_palindrome_recursive(clean_text)
 
 
-def is_palindrome_iterative(text):
+def is_palindrome_iterative(text): # thank you to Ryan Smith for the guidance
     #  implement the is_palindrome function iteratively here
-    for i in range(len(text)//2):
-        print(text[i])
-        if text[i] != text[-i]:
+
+    # where does each index (right & left) start?
+    left_index = 0
+    right_index = len(text) -1
+
+    # while our index place is not yet in the middle of the word
+    while left_index <= right_index:
+        if text[left_index] == text[right_index]: #check that both indexes match
+            #continue the loop by moving to next index
+            left_index += 1
+            right_index -= 1
+        else: #if not, cancel the function bc we immiedetly know it is not a palindrome
             return False
     return True
+
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
 
@@ -61,4 +71,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    print(is_palindrome_recursive('racecar'))
+    # print(is_palindrome('racecar'))
