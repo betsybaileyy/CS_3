@@ -3,7 +3,8 @@
 def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text.
     Best Case Run Time: 0(1) if at begining of string
-    Worst Case: 0(n) if item is not at begining"""
+    Worst Case: 0(n) if item is not at begining
+    Space complexity: 0(n) because we are relaiant on the size of text"""
 
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
@@ -18,7 +19,8 @@ def contains(text, pattern):
 def find_index(text, pattern, offset=0):
     """Return the starting index of the first occurrence of pattern in text,
     or None if not found.
-    Run time: 0(n) we are iterating through each index and checking it against the pattern"""
+    Run time: 0(n) we are iterating through each index and checking it against the pattern
+    Space complexity: 0(n) because we are relaiant on the size of text"""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # Implement find_index here (iteratively and/or recursively)
@@ -47,7 +49,8 @@ def find_index(text, pattern, offset=0):
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
     or an empty list if not found.
-    Run time: 0(n) we are iterating through each index and checking it against the pattern"""
+    Run time: 0(n) we are iterating through each index and checking it against the pattern
+    Space complexity: 0(n) because we are relaiant on the size of text"""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # Implement find_all_indexes here (iteratively and/or recursively)
@@ -95,4 +98,5 @@ def main():
 
 
 if __name__ == '__main__':
+
     main()
