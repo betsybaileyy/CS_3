@@ -2,13 +2,7 @@
 
 
 import string
-# Hint: Use these string constants to encode/decode hexadecimal digits and more
-# string.digits is '0123456789'
-# string.hexdigits is '0123456789abcdefABCDEF'
-# string.ascii_lowercase is 'abcdefghijklmnopqrstuvwxyz'
-# string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-# string.ascii_letters is ascii_lowercase + ascii_uppercase
-# string.printable is digits + ascii_letters + punctuation + whitespace
+
 
 letter_value = {
     "A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15,
@@ -27,7 +21,7 @@ def decode(digits, base): #def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     # assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    # TODO: Decode digits from binary (base 2)
+    # Decode digits from binary (base 2)
 
     answer = 0 # empty array to hold the value of the decoded bimary while we are still adding to it
 
@@ -47,10 +41,6 @@ def decode(digits, base): #def decode(digits, base):
 
 
 
-    # TODO: Decode digits from hexadecimal (base 16)
-    # ...
-    # TODO: Decode digits from any base (2 up to 36)
-    # ...
 
 
 def encode(number, base):
@@ -75,24 +65,6 @@ def encode(number, base):
     return base_rep[::-1]
 
 
-    # # TODO: Encode number in binary (base 2)
-    # remainder = 0
-    # rem_string = []
-    #
-    # while number > 0:
-    #     remainder = number % 2
-    #
-    # # TODO: Encode number in hexadecimal (base 16)
-    # # ...
-    # # TODO: Encode number in any base (2 up to 36)
-    # # ...
-    #
-    # remainder = 0
-    # rem_string = []
-    #
-    # while number > 0:
-    #     remainder = number % 2
-
 
 def convert(digits, base1, base2):
     """Convert given digits in base1 to digits in base2.
@@ -112,16 +84,6 @@ def convert(digits, base1, base2):
     basenew = encode(num, base2)
 
     return basenew
-
-
-    # TODO: Convert digits from base 2 to base 16 (and vice versa)
-    # ...
-    # TODO: Convert digits from base 2 to base 10 (and vice versa)
-    # ...
-    # TODO: Convert digits from base 10 to base 16 (and vice versa)
-    # ...
-    # TODO: Convert digits from any base to any base (2 up to 36)
-    # ...
 
 
 def main():
@@ -145,3 +107,12 @@ if __name__ == '__main__':
 
 
     decode('1010')
+
+
+# Hint: Use these string constants to encode/decode hexadecimal digits and more
+# string.digits is '0123456789'
+# string.hexdigits is '0123456789abcdefABCDEF'
+# string.ascii_lowercase is 'abcdefghijklmnopqrstuvwxyz'
+# string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+# string.ascii_letters is ascii_lowercase + ascii_uppercase
+# string.printable is digits + ascii_letters + punctuation + whitespace
