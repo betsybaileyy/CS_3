@@ -57,6 +57,7 @@ class BinarySearchTree(object):
 
     def __init__(self, items=None):
         """Initialize this binary search tree and insert the given items."""
+        # self.data = data
         self.root = None
         self.size = 0
         if items is not None:
@@ -125,8 +126,8 @@ class BinarySearchTree(object):
             parent.left = BinaryTreeNode(item)
 
         # Check if the given item should be inserted right of parent node
-        # elif parent and item > parent.data:
-        else:
+        elif item > parent.data:
+        # else:
             # Create a new node and set the parent's right child
             parent.right = BinaryTreeNode(item)
 
@@ -234,7 +235,7 @@ class BinarySearchTree(object):
         # Check if starting node exists
         if node is None:
             # Not found (base case)
-            return None
+            return parent
 
         # Check if the given item matches the node's data
         if item == node.data:
@@ -244,15 +245,15 @@ class BinarySearchTree(object):
         # Check if the given item is less than the node's data
         elif item < node.data:
             # Recursively descend to the node's left child, if it exists
-            if node is not None:
-                return self._find_parent_node_recursive(item, node.left, node)
+            # if node is not None:
+            return self._find_parent_node_recursive(item, node=node.left, parent=node)
                 # return self._find_parent_node_recursive(item, node=node.left, parent=node)
 
         # Check if the given item is greater than the node's data
         elif item > node.data:
             # Recursively descend to the node's right child, if it exists
-            if node is not None:
-                return self._find_parent_node_recursive(item, node.right, node)
+            # if node is not None:
+            return self._find_parent_node_recursive(item, node=node.right, parent=node)
                 # return self._find_parent_node_recursive(item, node=node.left, parent=node)
 
 
