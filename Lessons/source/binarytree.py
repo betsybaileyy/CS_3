@@ -117,16 +117,18 @@ class BinarySearchTree(object):
 
         # Find the parent node of where the given item should be inserted
         parent = self._find_parent_node_recursive(item, self.root)
+        # parent = self._find_parent_node_recursive(item, self.root)
 
         # Check if the given item should be inserted left of parent node
-        if parent and item < parent.data:
+        if item < parent.data: # parent and
             # Create a new node and set the parent's left child
             parent.left = BinaryTreeNode(item)
 
         # Check if the given item should be inserted right of parent node
-        elif parent and item > parent.data:
+        # elif parent and item > parent.data:
+        else:
             # Create a new node and set the parent's right child
-            parent.right = BinaryTreeNode()
+            parent.right = BinaryTreeNode(item)
 
         # Increase the tree size
         self.size += 1
@@ -243,13 +245,15 @@ class BinarySearchTree(object):
         elif item < node.data:
             # Recursively descend to the node's left child, if it exists
             if node is not None:
-                return self._find_parent_node_recursive(item, node=node.left, parent=node)
+                return self._find_parent_node_recursive(item, node.left, node)
+                # return self._find_parent_node_recursive(item, node=node.left, parent=node)
 
         # Check if the given item is greater than the node's data
         elif item > node.data:
             # Recursively descend to the node's right child, if it exists
             if node is not None:
-                return self._find_parent_node_recursive(item, node=node.left, parent=node)
+                return self._find_parent_node_recursive(item, node.right, node)
+                # return self._find_parent_node_recursive(item, node=node.left, parent=node)
 
 
     # def delete(self, item):
